@@ -1,0 +1,27 @@
+{
+  "name": "api-football",
+  "version": "1.0.0",
+  "description": "This is a microservice server named - football server.  Its job is to fetch data from APIs and respond with country ID & Name, League ID & Name, Team ID & Name, and, Overall League Position information",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node index.js",
+    "test": "mocha --recursive ./tests"
+  },
+  "keywords": [
+    "swagger"
+  ],
+  "license": "Unlicense",
+  "private": true,
+  "dependencies": {
+    "connect": "^3.2.0",
+    "js-yaml": "^3.3.0",
+    "request": "^2.88.0",
+    "swagger-tools": "^0.10.4"
+  },
+  "devDependencies": {
+    "chai-json-schema": "^1.5.0",
+    "chakram": "^1.5.0",
+    "mocha": "^5.2.0"
+  }
+}
