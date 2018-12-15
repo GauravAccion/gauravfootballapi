@@ -12,9 +12,10 @@ describe('tests for /apifootball', function() {
                 'headers': {"Content-Type":"application/json","Accept":"application/xml"},
                 'time': true
             });
-           
-            //expect(response).to.have.schema({"type":"object","properties":{"country_ID":{"type":"string"},"Country_Name":{"type":"string"},"League_ID":{"type":"string"},"League_Name":{"type":"string"},"Overall_League_Position":{"type":"string"}},"example":{"Overall_League_Position":"Overall_League_Position","League_Name":"League_Name","Country_Name":"Country_Name","League_ID":"League_ID","country_ID":"country_ID"}});
-            return chakram.wait();
+           expect(response).to.have.json(function(json) {
+                console.log(json);
+              });
+           return chakram.wait();
         });
 
         it('should respond 500 for "ServerError"', function() {
@@ -23,7 +24,9 @@ describe('tests for /apifootball', function() {
                 'headers': {"Content-Type":"application/json","Accept":"application/xml"},
                 'time': true
             });
-
+            expect(response).to.have.json(function(json) {
+                console.log(json);
+              });
            
             return chakram.wait();
         });    
