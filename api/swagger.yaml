@@ -1,0 +1,75 @@
+---
+swagger: "2.0"
+info:
+  description: "This is a microservice server named - football server.  Its job is\
+    \ to fetch data from APIs and respond with country ID & Name, League ID & Name,\
+    \ Team ID & Name, and, Overall League Position information"
+  version: "1.0.0"
+  title: "API FootBall "
+  contact:
+    email: "sapient@publicissapient.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost"
+basePath: "/api"
+tags:
+- name: "standings"
+  description: "standings of a team playing league football match"
+schemes:
+- "https"
+- "http"
+paths:
+  /apifootball:
+    get:
+      tags:
+      - "apifootball"
+      summary: "get standings information"
+      operationId: "getStandings"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "action"
+        in: "query"
+        description: "what action need to be performed"
+        required: true
+        type: "string"
+      - name: "APIkey"
+        in: "query"
+        description: "The provided api key"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Countries standing information"
+          schema:
+            $ref: "#/definitions/Countries"
+        500:
+          description: "ServerError"
+      x-swagger-router-controller: "Apifootball"
+definitions:
+  Countries:
+    type: "object"
+    properties:
+      country_ID:
+        type: "string"
+      Country_Name:
+        type: "string"
+      League_ID:
+        type: "string"
+      League_Name:
+        type: "string"
+      Overall_League_Position:
+        type: "string"
+    example:
+      Overall_League_Position: "Overall_League_Position"
+      League_Name: "League_Name"
+      Country_Name: "Country_Name"
+      League_ID: "League_ID"
+      country_ID: "country_ID"
+  action:
+    type: "string"
